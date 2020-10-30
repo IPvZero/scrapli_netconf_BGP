@@ -1,0 +1,39 @@
+CSR2#
+!
+hostname CSR2
+!
+!
+vrf definition MGMT
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+netconf-yang
+!
+restconf
+!
+username john privilege 15 password 0 cisco
+!
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+!
+interface GigabitEthernet1
+ vrf forwarding MGMT
+ ip address 192.168.31.102 255.255.255.0
+ no shut
+!
+interface GigabitEthernet2
+ ip address 10.0.0.2 255.255.255.252
+ no shut
+!
+interface GigabitEthernet3
+ ip address 10.0.0.5 255.255.255.252
+ no shut
+
+ip http server
+ip http authentication local
+ip http secure-server
+
+end
