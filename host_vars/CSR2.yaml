@@ -1,0 +1,28 @@
+---
+
+bgp:
+  asn: "65001"
+  rid: "2.2.2.2"
+  neighbors:
+    - neighbor: 1.1.1.1
+      remote_as: "65001"
+      update_source: "0"
+    - neighbor: 3.3.3.3
+      remote_as: "65001"
+      update_source: "0"
+  route_reflector: "True"
+  advertising: "False"
+
+ospf:
+  process_id: "1"
+  rid: 2.2.2.2
+  networks:
+    - number: 10.0.0.0
+      wildcard: 0.0.0.3
+      area: "0"
+    - number: 10.0.0.4
+      wildcard: 0.0.0.3
+      area: "0"
+    - number: 2.2.2.2
+      wildcard: 0.0.0.0
+      area: "0"
