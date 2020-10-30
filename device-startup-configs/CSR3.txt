@@ -1,0 +1,41 @@
+CSR3#
+!
+hostname CSR3
+!
+!
+vrf definition MGMT
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+netconf-yang
+!
+restconf
+!
+username john privilege 15 password 0 cisco
+!
+!
+interface Loopback0
+ ip address 3.3.3.3 255.255.255.255
+!
+interface Loopback33
+ ip address 33.33.33.33 255.255.255.255
+!
+interface Loopback55
+ ip address 55.55.55.55 255.255.255.255
+!
+interface GigabitEthernet1
+ vrf forwarding MGMT
+ ip address 192.168.31.103 255.255.255.0
+ no shut
+!
+interface GigabitEthernet2
+ ip address 10.0.0.6 255.255.255.252
+ no shut
+!
+ip http server
+ip http authentication local
+ip http secure-server
+!
+end
