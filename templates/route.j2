@@ -1,0 +1,76 @@
+<config>
+        <native
+                xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+                <router operation="replace">
+                        <bgp
+                                xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-bgp">
+                                <id>{{ host.facts.bgp.asn }}</id>
+                                <bgp>
+                                        <router-id>
+                                                <ip-id>{{ host.facts.bgp.rid }}</ip-id>
+                                        </router-id>
+                                </bgp>
+          {% for n in host.facts.bgp.neighbors %}
+
+                                <neighbor>
+                                        <id>{{ n.neighbor }}</id>
+                                        <remote-as>{{ n.remote_as }}</remote-as>
+                                        <update-source>
+                                                <Loopback>{{ n.update_source }}</Loopback>
+                                        </update-source>
+                                </neighbor>
+          {% endfor %}
+          {% for n in host.facts.bgp.neighbors %}
+
+                                <address-family>
+                                        <no-vrf>
+                                                <ipv4>
+                                                        <af-name>unicast</af-name>
+                                                        <ipv4-unicast>
+                                                                <neighbor>
+                                                                        <id>{{ n.neighbor }}</id>
+                                                                        <activate/>
+                  {% if host.facts.bgp.route_reflector == "True" %}
+
+                                                                        <route-reflector-client/>
+                  {% endif %}
+
+                                                                </neighbor>
+                  {% if host.facts.bgp.advertising == "True" %}
+
+                                                                <network>
+                   {% for n in host.facts.bgp.networks %}
+
+                                                                        <with-mask>
+                                                                                <number>{{ n.network }}</number>
+                                                                                <mask>{{ n.mask }}</mask>
+                                                                        </with-mask>
+                  {% endfor %}
+
+                                                                </network>
+                  {% endif %}
+
+                                                        </ipv4-unicast>
+                                                </ipv4>
+                                        </no-vrf>
+                                </address-family>
+          {% endfor %}
+
+                        </bgp>
+                        <ospf
+                                xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+                                <id>{{ host.facts.ospf.process_id }}</id>
+                                <router-id>{{ host.facts.ospf.rid }}</router-id>
+          {% for n in host.facts.ospf.networks %}
+
+                                <network>
+                                        <ip>{{ n.number }}</ip>
+                                        <mask>{{ n.wildcard }}</mask>
+                                        <area>{{ n.area }}</area>
+                                </network>
+          {% endfor %}
+
+                        </ospf>
+                </router>
+        </native>
+</config>
