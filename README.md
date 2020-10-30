@@ -15,7 +15,8 @@ python3 -m pip install nornir-jinja2
 ```
 ### Tutorial Workflow & Overview
 
-Build the topology using three CSR1000v routers and one out-of-band switch. Copy the start-up configurations into each device. Then simply deploy the script by typing ```python3 run1.py```!
+Build the topology using three CSR1000v routers and one out-of-band switch. Copy the start-up configurations into each device. Then simply deploy the script by typing ```python3 run1.py```
+
 You should now have an iBGP over OSPF network, with CSR2 acting as a Route Reflector, and CSR3 advertising 2 prefixes into BGP! 
 
 ### Connectivity 
