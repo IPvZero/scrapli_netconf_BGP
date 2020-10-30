@@ -16,7 +16,7 @@ python3 -m pip install nornir-jinja2
 ### Tutorial Workflow & Overview
 
 Build the topology using three CSR1000v routers and one out-of-band switch. Copy the start-up configurations into each device. Then simply deploy the script!
-You should now have an iBGP over OSPF network, with CSR2 acting as a Route Reflector, and CSR3 advertising 2 prefixes into BGP!
+You should now have an iBGP over OSPF network, with CSR2 acting as a Route Reflector, and CSR3 advertising 2 prefixes into BGP! The MGMT IP ip address range I use in my lab is ```192.168.31.0/24```. This is the IP address on the GigabitEthernet1 interface of each router, and the IPs uses in my Nornir hosts.yaml inventory file. Change these addresses to suit your own lab requirements.
 
 ### TOPOLOGY
 
