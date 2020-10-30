@@ -7,8 +7,6 @@ cisco_group:
   data:
     radius: "john"
   connection_options:
-    netmiko:
-      extras:  {}
     scrapli_netconf:
         extras:
           port: 830
