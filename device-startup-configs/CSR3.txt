@@ -27,6 +27,7 @@ interface Loopback55
 !
 interface GigabitEthernet1
  vrf forwarding MGMT
+ description Change this to your own MGMT IP address - and use it in your Nornir hosts.yaml 
  ip address 192.168.31.103 255.255.255.0
  no shut
 !
