@@ -30,7 +30,7 @@ This lab was tested using the following CSR1000v image taken from my Personal CM
 ```Cisco IOS Software [Gibraltar], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 16.11.1b, RELEASE SOFTWARE (fc2)```
 
 
-Be aware that newer versions of the CSR1000v support the option for a Candidate configuration. When “candidate” data store is enabled, the Running data store isn't writable through NETCONF sessions. Instead all configurations get committed only through Candidate. In this case, users you change the target data store in the ```run1.py``` script from ```target="running"``` to ```target="candidate"``` and then commit the configuration to transfer it into the live running configuration.
+Be aware that newer versions of the CSR1000v support the option for a Candidate configuration. When “candidate” data store is enabled, the Running data store isn't writable through NETCONF sessions. Instead all configurations get committed only through Candidate. In this case, users should modify the target data store in the ```run1.py``` script from ```target="running"``` to ```target="candidate"``` - and then commit the configuration to transfer it into the live running configuration.
 
 
 
