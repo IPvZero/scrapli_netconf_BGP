@@ -23,7 +23,7 @@ You should now have an iBGP over OSPF network, with CSR2 acting as a Route Refle
 The MGMT IP address range I use in my lab is ```192.168.31.0/24```. This is the IP address range used on the GigabitEthernet1 interface of each router, and the IP range used in my Nornir hosts.yaml inventory file. Change these addresses to suit your own lab requirements.
 
 ### Device Version (Running vs Candidate)
-The lab tested using the CSR1000v taken from my Personal CML-P account.
+This lab was tested using the following CSR1000v image taken from my Personal CML-P account:
 
 ```Cisco IOS XE Software, Version 16.11.01b```
 
